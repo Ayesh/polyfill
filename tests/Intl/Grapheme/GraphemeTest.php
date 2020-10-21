@@ -104,8 +104,32 @@ class GraphemeTest extends TestCase
         $this->assertSame('jà', grapheme_substr($c, -2));
         $this->assertSame('j', grapheme_substr($c, -2, -1));
         $this->assertSame('', grapheme_substr($c, -2, -2));
+    }
+
+    /**
+     * @covers \Symfony\Polyfill\Intl\Grapheme\Grapheme::grapheme_substr
+     * @requires PHP < 8.0.0
+     */
+    public function testGraphemeSubstrReturnsFalsePrePHP8()
+    {
+        $c = 'déjà';
         $this->assertFalse(grapheme_substr($c, 5, 0));
         $this->assertFalse(grapheme_substr($c, -5, 0));
+        $this->assertFalse(grapheme_substr($c, -42, 0));
+        $this->assertFalse(grapheme_substr($c, 42, 5));
+    }
+
+    /**
+     * @covers \Symfony\Polyfill\Intl\Grapheme\Grapheme::grapheme_substr
+     * @requires PHP 8.0.0
+     */
+    public function testGraphemeSubstrReturnsEmptyPostPHP8()
+    {
+        $c = 'déjà';
+        $this->assertSame('', grapheme_substr($c, 5, 0));
+        $this->assertSame('', grapheme_substr($c, -5, 0));
+        $this->assertSame('', grapheme_substr($c, -42, 0));
+        $this->assertSame('', grapheme_substr($c, 42, 5));
     }
 
     /**
