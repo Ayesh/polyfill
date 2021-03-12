@@ -1,0 +1,11 @@
+Array
+(
+    [test_file] => Array
+        (
+            [name] => symfony.txt
+            [type] => text/plain
+            [error] => 0
+            [size] => 5
+        )
+
+)
