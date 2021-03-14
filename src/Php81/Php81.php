@@ -34,4 +34,9 @@ final class Php81
 
         return true;
     }
+
+    public static function println(string $data): int
+    {
+        return printf("%s\n", $data);
+    }
 }

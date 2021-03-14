@@ -27,4 +27,16 @@ class Php81Test extends TestCase
         $this->assertFalse(array_is_list([0 => 'a', 2 => 'b']));
         $this->assertFalse(array_is_list([1 => 'a', 2 => 'b']));
     }
+
+    /**
+     * @covers \Symfony\Polyfill\Php81\Php81::println
+     */
+    public function testPrintln()
+    {
+        $this->expectOutputString("Hello\nWorld\n\nSymfony🚀\n");
+        $this->assertSame(6, println('Hello'));
+        $this->assertSame(6, println('World'));
+        $this->assertSame(1, println(''));
+        $this->assertSame(12, println('Symfony🚀'));
+    }
 }

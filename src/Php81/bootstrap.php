@@ -22,3 +22,7 @@ if (!function_exists('array_is_list')) {
 if (!function_exists('enum_exists')) {
     function enum_exists(string $enum, bool $autoload = true): bool { return $autoload && class_exists($enum) && false; }
 }
+
+if (!function_exists('println')) {
+    function println(string $data): int { return p\Php81::println($data); }
+}

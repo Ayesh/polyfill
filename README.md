@@ -56,6 +56,7 @@ Polyfills are provided for:
 - the `get_resource_id` function introduced in PHP 8.0;
 - the `Attribute` class introduced in PHP 8.0;
 - the `Stringable` interface introduced in PHP 8.0;
+- the `println` function introduced in PHP 8.1;
 
 It is strongly recommended to upgrade your PHP version and/or install the missing
 extensions whenever possible. This polyfill should be used only when there is no
