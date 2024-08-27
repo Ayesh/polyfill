@@ -71,6 +71,7 @@ Polyfills are provided for:
 - the `array_find`, `array_find_key`, `array_any` and `array_all` functions introduced in PHP 8.4;
 - the `Deprecated` attribute introduced in PHP 8.4;
 - the `mb_trim`, `mb_ltrim` and `mb_rtrim` functions introduced in PHP 8.4;
+- the `CURL_HTTP_VERSION_3` and `CURL_HTTP_VERSION_3ONLY` constants introduced in PHP 8.4;
 
 It is strongly recommended to upgrade your PHP version and/or install the missing
 extensions whenever possible. This polyfill should be used only when there is no

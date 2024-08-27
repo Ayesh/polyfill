@@ -64,6 +64,22 @@ class Php84Test extends TestCase
         $this->assertSame($expected, array_all($array, $callback));
     }
 
+    public function testCurlHttp3Constants() {
+        if (!function_exists('curl_version')) {
+            $this->markTestSkipped('Curl extension is not available.');
+        }
+
+        // If the curl_version()['features'] bitmask contains the bits for CURL_VERSION_HTTP3,
+        // it means Curl supports HTTP3.
+        if (!(curl_version()['features'] & 33554432)) { // 33554432 = CURL_VERSION_HTTP3
+            $this->markTestSkipped('Curl extension is not built with HTTP3 support');
+        }
+
+        $ch = curl_init();
+        $this->assertTrue(curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_3ONLY));
+        $this->assertTrue(curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_3));
+    }
+
     public static function ucFirstDataProvider(): array
     {
         return [
