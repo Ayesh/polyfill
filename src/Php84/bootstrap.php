@@ -15,6 +15,11 @@ if (\PHP_VERSION_ID >= 80400) {
     return;
 }
 
+if (!defined('CURL_HTTP_VERSION_3')) {
+    define('CURL_HTTP_VERSION_3', 30);
+    define('CURL_HTTP_VERSION_3ONLY', 31);
+}
+
 if (!function_exists('array_find')) {
     function array_find(array $array, callable $callback) { return p\Php84::array_find($array, $callback); }
 }
