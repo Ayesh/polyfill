@@ -4,6 +4,11 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/5.3/phpunit.xsd"
          colors="true"
          bootstrap="vendor/autoload.php"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnSkippedTests="true"
 >
     <php>
         <ini name="error_reporting" value="-1" />

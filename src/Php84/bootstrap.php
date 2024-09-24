@@ -12,7 +12,7 @@
 use Symfony\Polyfill\Php84 as p;
 
 if (\PHP_VERSION_ID >= 80400) {
-    return;
+    //return;
 }
 
 if (defined('CURL_VERSION_HTTP3') || PHP_VERSION_ID < 80200 && function_exists('curl_version') && curl_version()['version'] >= 0x074200) { // libcurl >= 7.66.0
@@ -58,5 +58,12 @@ if (extension_loaded('mbstring')) {
 
     if (!function_exists('mb_rtrim')) {
         function mb_rtrim(string $string, ?string $characters = null, ?string $encoding = null): string { return p\Php84::mb_rtrim($string, $characters, $encoding); }
+    }
+}
+
+if (extension_loaded('bcmath')) {
+    if (!function_exists('bcdivmod')) {
+        var_dump(__LINE__);
+        function bcdivmod(string $num1, string $num2, ?int $scale = null): array { return p\Php84::bcdivmod($num1, $num2, $scale); }
     }
 }
