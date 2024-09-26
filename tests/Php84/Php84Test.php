@@ -256,6 +256,17 @@ class Php84Test extends TestCase
         mb_internal_encoding($old);
     }
 
+    /**
+     * @covers \Symfony\Polyfill\Php84\Php84::bcdivmod
+     *
+     * @dataProvider bcDivModProvider
+     */
+    public function testBcDivMod(array $expected, string $num1, string $num2, ?int $scale = null): void
+    {
+        $this->assertFalse(function_exists('bcdivmod'));
+        $this->assertSame($expected, bcdivmod($num1, $num2, $scale));
+    }
+
     public static function mbTrimProvider(): iterable
     {
         yield ['ABC', 'ABC'];
@@ -318,5 +329,11 @@ class Php84Test extends TestCase
         yield [' abcd ', ' abcd ', ''];
 
         yield ["foo\n", "foo\n", 'o'];
+    }
+
+    public static function bcDivModProvider(): iterable
+    {
+        yield [['3', 4343], '22', '7'];
+        yield [['1', '1'], '10', '10'];
     }
 }
